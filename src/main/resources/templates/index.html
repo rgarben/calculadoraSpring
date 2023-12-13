@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<h1>Calculadora</h1>
+<br>
+
+
+<form th:action="@{/resolver}" th:object="${calculadora}">
+  <div class="form-group row">
+    <label for="numero1" class="col-4 col-form-label">Numero 1</label> 
+    <div class="col-8">
+      <input th:field="*{numero1}" id="numero1" name="numero1" placeholder="Inserte el primer numero" type="text" class="form-control" required="required">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="operador" class="col-4 col-form-label">Operador</label> 
+    <div class="col-8">
+      <select th:field="*{operador}"id="operador" name="operador" class="custom-select" aria-describedby="operadorHelpBlock" required="required">
+        <option value="1">+</option>
+        <option value="2">-</option>
+        <option value="3">*</option>
+        <option value="4">/</option>
+      </select> 
+      <span id="operadorHelpBlock" class="form-text text-muted">Seleciona la operacion a realizar</span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="numero2" class="col-4 col-form-label">Numero 2</label> 
+    <div class="col-8">
+      <input th:field="*{numero2}" id="numero2" name="numero2" placeholder="Inserte el segundo numero" type="text" class="form-control" required="required">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="resultado" class="col-4 col-form-label">Resultado</label> 
+    <div class="col-8">
+      <input th:text="${resul}" id="resultado" name="resultado" type="text" class="form-control" aria-describedby="resultadoHelpBlock" readonly> 
+      <span id="resultadoHelpBlock" class="form-text text-muted">Aqui se mostrara el resultado de la operacion.</span>
+    </div>
+  </div> 
+  <div class="form-group row">
+    <div class="offset-4 col-8">
+      <button name="submit" type="submit" class="btn btn-primary">Calcular</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>
